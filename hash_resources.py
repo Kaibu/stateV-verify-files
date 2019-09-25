@@ -93,13 +93,13 @@ def download_file(path, hashfile, api_url):
     print(hashfile)
     file = os.path.join(str(path), str(hashfile["UrlPath"]).replace("\\", "/"), str(hashfile["Filename"]).replace("\\", "/"))
 
-    url = str(api_url).replace("\\", "/") + "/state" + str(hashfile["UrlPath"]).replace("\\", "/") + "/" + str(hashfile["Filename"]).replace("\\", "/")
+    url = str(api_url).replace("\\", "/") + "/state/" + str(hashfile["UrlPath"]).replace("\\", "/") + "/" + str(hashfile["Filename"]).replace("\\", "/")
 
     if not os.path.isdir(os.path.dirname(file)):
         os.makedirs(os.path.dirname(file))
 
-    urllib.request.urlretrieve(url, file)
     print(url)
+    urllib.request.urlretrieve(url, file)
 
 #delete unused files (only by filename rn)
 def delete_unused_files(path, hashlist):
